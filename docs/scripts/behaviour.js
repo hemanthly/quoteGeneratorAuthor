@@ -19,16 +19,16 @@ function complete(){
 }
 async function getStoicQuote() {
   loading();
-  const apiUrl = "https://api.themotivate365.com/stoic-quote";
+  const apiUrl = "https://stoic-quotes.com/api/quote";
 
   try {
     const apiResponse = await fetch(apiUrl);
     if (apiResponse.ok) {
       const data = await apiResponse.json();
-      quoteText.innerText = data.quote;
+      quoteText.innerText = data.text;
       authorText.innerText =
         data.author === null || data.author === "" ? "Unknown" : data.author;
-      if(data.quote.length > 30)
+      if(data.text.length > 30)
         quoteText.classList.add('long-text');
 
         complete();
